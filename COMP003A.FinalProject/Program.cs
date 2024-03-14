@@ -254,7 +254,7 @@ namespace COMP003A.FinalProject
 
         // TODO: add xml comments - Done
         /// <summary>
-        /// array for user's input in feet and inches (parses user response), doesn't allow responses such as 0 0
+        /// array for user's input in feet and inches (parses user response), doesn't allow responses such as 0 0. and inches within the range 1-12 no negative responses
         /// </summary>
         /// <param name="input"> integer input for height</param>
         /// <param name="heightArray"> array for parsed height values</param>
@@ -269,10 +269,10 @@ namespace COMP003A.FinalProject
             // can be split via feet and inches and doesn't allow responses like 0 0.
             // TODO: what is the purpose of double.TryParse()? Parses the user's input from a string to a double value, if true it will execute, failure to parse means the entered value is not a parasable input
             // TODO: what is the purpose of the out keyword? The purpose of double.TryParse() is to pass and reference the double parsed value to 'heightArray'
-            // TODO: what is the purpose of && operator? The purpose of && in this context is to connect added conditions within the array, for example not allowing values such as 0 0,
-            if (parts.Length == 2 && double.TryParse(parts[0], out heightArray[0]) && double.TryParse(parts[1], out heightArray[1]) && (heightArray[0] != 0 || heightArray[1] != 0))
-                
-             /// (heightArray[0] != 0 || heightArray[1] != 0)) condition that doesn't allow user input to be 0, 0, ends off with a double )) to close it
+            // TODO: what is the purpose of && operator? The purpose of && in this context is to connect added conditions within the array, for example not allowing values such as 0 0, and inches accepted within the range of 1-12
+            if (parts.Length == 2 && double.TryParse(parts[0], out heightArray[0]) && double.TryParse(parts[1], out heightArray[1]) && (heightArray[0] >= 0 && heightArray[1] >= 0) && (heightArray[0] % 1 == 0 && heightArray[1] % 1 == 0) && (heightArray[1] < 12) && (heightArray[0] >= 0 && heightArray[1] >= 0) && (heightArray[0] % 1 == 0 && heightArray[1] % 1 == 0))
+
+            ///  conditions that doesn't allow user input to be 0, 0, ends off with a double )) to close it
 
             {
                 return true;
